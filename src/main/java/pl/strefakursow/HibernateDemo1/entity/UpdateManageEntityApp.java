@@ -13,10 +13,11 @@ public class UpdateManageEntityApp {
         SessionFactory factory = conf.buildSessionFactory();
         Session session = factory.getCurrentSession();
         session.beginTransaction();
-        Employee employee= session.get(Employee.class,11);
-        employee.setFirstName("Tadeusz");
+        Employee employee= session.get(Employee.class,3);
+        employee.setFirstName("Karol");
         session.getTransaction().commit();
-        employee.setLastName("Nowak");
+        employee.setLastName("Sobolewski");
+
         System.out.println(employee + " zaktualizowane dane");
         factory.close();
 
