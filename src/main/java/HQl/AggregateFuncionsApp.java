@@ -6,7 +6,9 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 import pl.strefakursow.HibernateDemo1.entity.Employee;
 
-public class DeleteApp {
+import java.util.List;
+
+public class AggregateFuncionsApp {
     public static void main(String[] args) {
 
         Configuration conf = new Configuration();
@@ -14,21 +16,23 @@ public class DeleteApp {
         conf.addAnnotatedClass(Employee.class);
         SessionFactory factory = conf.buildSessionFactory();
         Session session = factory.getCurrentSession();
-
-
-        int idEmployee = (224);
-
         session.beginTransaction();
 
-        String delete = "delete Employee e  where e.idEmployee=:idEmployee";
-        Query query = session.createQuery(delete);
+        String avg = "select round(avg(e.salary),2) from Employee e";
+        String sum  = "select round(sum(e.salary),2) from Employee e";
+        String count = "select round(count(e.salary),2) from Employee e";
+        String min = "select round(min(e.salary),2) from Employee e";
+        String max = "select round(max(e.salary),2) from Employee e";
 
-        query.setParameter("idEmployee",idEmployee);
-        int rows = query.executeUpdate();
-        System.out.println("ilosc usunietych wierszy"  + rows);
+
+        Query query = session.createQuery(count);
+        Long resoult = (Long) query.getSingleResult();
 
         session.getTransaction().commit();
+        System.out.println("wynik " + resoult);
+
         factory.close();
+
 
     }
 }
