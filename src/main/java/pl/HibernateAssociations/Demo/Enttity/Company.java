@@ -6,9 +6,9 @@ import javax.persistence.criteria.CriteriaBuilder;
 @Entity
 @Table(name = "company")
 public class Company {
-
-    @Column(name = "id_company")
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_company")
     private Integer idCompany;
 
     @Column(name = "name")
@@ -16,6 +16,24 @@ public class Company {
 
     @Column(name = "value")
     private Integer value;
+
+    @OneToOne
+    @JoinColumn(name = "id_company_detail")
+    private CompanyDetail companyDetail;
+
+
+    public Company(CompanyDetail companyDetail) {
+        this.companyDetail = companyDetail;
+    }
+
+    public CompanyDetail getCompanyDetail() {
+        return companyDetail;
+    }
+
+    public void setCompanyDetail(CompanyDetail companyDetail) {
+        this.companyDetail = companyDetail;
+    }
+
 
     public Company(){
 
@@ -58,4 +76,6 @@ public class Company {
                 ", value=" + value +
                 '}';
     }
+
+
 }

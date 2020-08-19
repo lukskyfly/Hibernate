@@ -15,8 +15,8 @@ public class CompanyDetail {
     @Column(name = "employee_number")
     private Integer employeeNumber;
 
-    public CompanyDetail(){
-    }
+
+    public CompanyDetail(){}
 
     public CompanyDetail(String residence, Integer employeeNumber) {
         this.residence = residence;
