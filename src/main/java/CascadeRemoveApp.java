@@ -16,7 +16,7 @@ public class CascadeRemoveApp {
 
 
         session.beginTransaction();
-        Company company = session.get(Company.class,16);
+        Company company = session.get(Company.class,19);
         session.remove(company);
         session.getTransaction().commit();
         factory.close();

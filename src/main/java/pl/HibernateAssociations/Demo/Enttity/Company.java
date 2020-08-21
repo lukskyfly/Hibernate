@@ -17,7 +17,7 @@ public class Company {
     @Column(name = "value")
     private Integer value;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = {CascadeType.REMOVE,CascadeType.PERSIST})
     @JoinColumn(name = "id_company_detail")
     private CompanyDetail companyDetail;
 

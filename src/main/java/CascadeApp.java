@@ -14,8 +14,8 @@ public class CascadeApp {
         conf.addAnnotatedClass(CompanyDetail.class);
         SessionFactory factory = conf.buildSessionFactory();
         Session session = factory.getCurrentSession();
-        Company company = new Company("KGHM",10000000);
-        CompanyDetail companyDetail = new CompanyDetail("Poland", 150);
+        Company company = new Company("Orlen",200000000);
+        CompanyDetail companyDetail = new CompanyDetail("Poland", 1150);
         company.setCompanyDetail(companyDetail);
         session.beginTransaction();
 
