@@ -14,7 +14,16 @@ public class CompanyDetail {
     private String residence;
     @Column(name = "employee_number")
     private Integer employeeNumber;
+    @OneToOne(mappedBy ="companyDetail",cascade = CascadeType.ALL)
+    private Company company;
 
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
 
     public CompanyDetail(){}
 
