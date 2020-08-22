@@ -19,6 +19,7 @@ public class BiDirectionalApp {
 
         session.beginTransaction();
         CompanyDetail detail = session.get(CompanyDetail.class,26);
+        session.remove(detail);
 //        session.persist(company);
 //        session.persist(detail);
         session.getTransaction().commit();
