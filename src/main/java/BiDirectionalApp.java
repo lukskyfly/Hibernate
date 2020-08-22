@@ -13,18 +13,17 @@ public class BiDirectionalApp {
         conf.addAnnotatedClass(CompanyDetail.class);
         SessionFactory factory = conf.buildSessionFactory();
         Session session = factory.getCurrentSession();
-        Company company = new Company("PZU", 50000000);
-        CompanyDetail detail = new CompanyDetail("POLAND",15000);
-        company.setCompanyDetail(detail);
+//        Company company = new Company("PZU", 50000000);
+//        CompanyDetail detail = new CompanyDetail("POLAND",15000);
+//        company.setCompanyDetail(detail);
 
         session.beginTransaction();
-
-        session.persist(company);
-        session.persist(detail);
-
-
-
+        CompanyDetail detail = session.get(CompanyDetail.class,26);
+//        session.persist(company);
+//        session.persist(detail);
         session.getTransaction().commit();
+
+        System.out.println(detail.getCompany());
 
         factory.close();
 
