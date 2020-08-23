@@ -13,6 +13,11 @@ public class Property {
     private  String city;
     @Column(name = "room_number")
     private Integer roomNumber;
+    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+    @JoinColumn(name = "id_company")
+    private Company company;
+
+    public Property(){}
 
     public Property(String city, Integer roomNumber) {
         this.city = city;
@@ -41,6 +46,14 @@ public class Property {
 
     public void setRoomNumber(Integer roomNumber) {
         this.roomNumber = roomNumber;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
     }
 
     @Override

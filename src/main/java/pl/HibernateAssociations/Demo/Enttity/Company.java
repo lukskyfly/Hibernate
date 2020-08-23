@@ -2,6 +2,8 @@ package pl.HibernateAssociations.Demo.Enttity;
 
 import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "company")
@@ -20,6 +22,8 @@ public class Company {
     @OneToOne(cascade = {CascadeType.REMOVE,CascadeType.PERSIST,CascadeType.ALL})
     @JoinColumn(name = "id_company_detail")
     private CompanyDetail companyDetail;
+    @OneToMany(mappedBy = "company",cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+    private List<Property> properties;
 
 
     public Company(CompanyDetail companyDetail) {
@@ -66,6 +70,22 @@ public class Company {
 
     public void setValue(Integer value) {
         this.value = value;
+    }
+
+    public List<Property> getProperties() {
+        return properties;
+    }
+
+    public void setProperties(List<Property> properties) {
+        this.properties = properties;
+    }
+
+    public void addProperty(Property property){
+            if(properties == null){
+                properties = new ArrayList<>();
+            }
+            properties.add(property);
+            property.setCompany(this);
     }
 
     @Override
