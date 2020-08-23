@@ -1,4 +1,4 @@
-package pl.HibernateAssociations.Demo.OneToOne;
+package HQl;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
