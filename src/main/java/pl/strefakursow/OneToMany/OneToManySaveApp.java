@@ -19,16 +19,17 @@ public class OneToManySaveApp {
         SessionFactory factory = conf.buildSessionFactory();
         Session session = factory.getCurrentSession();
 
-        String getCompany = "select c from Company c where c.name = 'Strefa_kursow'";
+        String getCompany = "select c from Company c where c.name = 'KGHM'";
         session.beginTransaction();
-//        Property property = new Property("Tarnobrzeg",20);
-//        Property property2 = new Property("Nowy_Rakow",60);
+//        Property property = new Property("Moskwa",125);
+//        Property property2 = new Property("Paryz",160);
         Query dupa =session.createQuery(getCompany);
         Company company = (Company) dupa.getSingleResult();
-        System.out.println(company);
-        for(Property property : company.getProperties()){
-            System.out.println(property);
-
+//        System.out.println(company);
+      for(Property property : company.getProperties()){
+          if("Warszawa".equals(property.getCity())) {
+              session.delete(property);
+          }
         }
 
 //        company.addProperty(property);
@@ -36,10 +37,6 @@ public class OneToManySaveApp {
 //        session.persist(property);
 //        session.persist(property2);
         session.getTransaction().commit();
-
-
-
-
         factory.close();
     }
 }
