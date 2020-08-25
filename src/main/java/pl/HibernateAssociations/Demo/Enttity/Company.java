@@ -19,10 +19,11 @@ public class Company {
     @Column(name = "value")
     private Integer value;
 
-    @OneToOne(cascade = {CascadeType.REMOVE,CascadeType.PERSIST,CascadeType.ALL})
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_company_detail")
     private CompanyDetail companyDetail;
     @OneToMany(mappedBy = "company",cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+
     private List<Property> properties;
 
 
@@ -86,6 +87,7 @@ public class Company {
             }
             properties.add(property);
             property.setCompany(this);
+
     }
 
     @Override

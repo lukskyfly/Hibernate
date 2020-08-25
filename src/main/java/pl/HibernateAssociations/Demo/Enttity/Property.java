@@ -3,11 +3,11 @@ package pl.HibernateAssociations.Demo.Enttity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "propery")
+@Table(name = "property")
 public class Property {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idProperty")
+    @Column(name = "id_property")
     private Integer idProperty;
     @Column(name = "city")
     private  String city;
