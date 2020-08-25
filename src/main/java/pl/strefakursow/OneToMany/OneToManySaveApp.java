@@ -21,20 +21,24 @@ public class OneToManySaveApp {
 
         String getCompany = "select c from Company c where c.name = 'Strefa_kursow'";
         session.beginTransaction();
-        Property property = new Property("Tarnobrzeg",20);
-        Property property2 = new Property("Nowy_Rakow",60);
-
-
-
+//        Property property = new Property("Tarnobrzeg",20);
+//        Property property2 = new Property("Nowy_Rakow",60);
         Query dupa =session.createQuery(getCompany);
         Company company = (Company) dupa.getSingleResult();
-        company.addProperty(property);
-        company.addProperty(property2);
+        System.out.println(company);
+        for(Property property : company.getProperties()){
+            System.out.println(property);
 
+        }
 
-        session.persist(property);
-        session.persist(property2);
+//        company.addProperty(property);
+//        company.addProperty(property2);
+//        session.persist(property);
+//        session.persist(property2);
         session.getTransaction().commit();
+
+
+
 
         factory.close();
     }
