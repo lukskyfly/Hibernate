@@ -24,14 +24,17 @@ public class OneToManySaveApp {
 //        Property property = new Property("Moskwa",125);
 //        Property property2 = new Property("Paryz",160);
         Query dupa =session.createQuery(getCompany);
-        Company company = (Company) dupa.getSingleResult();
-//        System.out.println(company);
-      for(Property property : company.getProperties()){
-          if("Warszawa".equals(property.getCity())) {
-              session.delete(property);
-          }
-        }
 
+        int idToDelete = 5;
+       Property property =  session.get(Property.class,idToDelete);
+        session.delete(property);
+//        Company company = (Company) dupa.getSingleResult();
+//        System.out.println(company);
+//      for(Property property : company.getProperties()){
+//          if("Warszawa".equals(property.getCity())) {
+//              session.delete(property);
+//          }
+//        }
 //        company.addProperty(property);
 //        company.addProperty(property2);
 //        session.persist(property);
