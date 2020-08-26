@@ -1,4 +1,4 @@
-package pl.strefakursow.OneToMany;
+package HQl;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -25,7 +25,7 @@ public class OneToManySaveApp {
 //        Property property2 = new Property("Paryz",160);
         Query dupa =session.createQuery(getCompany);
 
-        int idToDelete = 5;
+        int idToDelete = 6;
        Property property =  session.get(Property.class,idToDelete);
         session.delete(property);
 //        Company company = (Company) dupa.getSingleResult();
