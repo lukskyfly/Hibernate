@@ -22,7 +22,7 @@ public class Company {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_company_detail")
     private CompanyDetail companyDetail;
-    @OneToMany(mappedBy = "company",cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+    @OneToMany(fetch = FetchType.EAGER,mappedBy = "company",cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
 
     private List<Property> properties;
 
