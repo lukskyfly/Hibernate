@@ -3,7 +3,9 @@ package pl.HibernateAssociations.Demo.Enttity;
 import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "company")
@@ -23,8 +25,12 @@ public class Company {
     @JoinColumn(name = "id_company_detail")
     private CompanyDetail companyDetail;
     @OneToMany(fetch = FetchType.EAGER,mappedBy = "company",cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
-
     private List<Property> properties;
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_company")
+    private Set<Department> departments ;
+
+
 
 
     public Company(CompanyDetail companyDetail) {
@@ -87,6 +93,22 @@ public class Company {
             }
             properties.add(property);
             property.setCompany(this);
+
+    }
+
+    public Set<Department> getDepartments() {
+        return departments;
+    }
+
+    public void setDepartments(Set<Department> departments) {
+        this.departments = departments;
+    }
+    public void addDepartment(Department department){
+        if(departments==null){
+            departments= new HashSet<>();
+
+        }
+        departments.add(department);
 
     }
 
