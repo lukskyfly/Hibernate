@@ -33,12 +33,16 @@ public class ManyToManyHqlApp {
         String getTraining = "select t from Training t where size(t.employees)>= : minEmployeeNumber";
         String course = "javascript";
         String getEmployee = "select e from Employee e join e.trainings t where t.name =:course ";
+        int trainingNumber = 1;
+        int maxSalary = 12000;
+        String getEmployee2 = "select e from Employee e where size(e.trainings) = :trainingNumber and e.salary < : maxSalary";
 
         session.beginTransaction();
 
-        Query dupa = session.createQuery(getEmployee);
+        Query dupa = session.createQuery(getEmployee2);
 //        dupa.setParameter("minEmployeeNumber", minEmployeeNumber);
-        dupa.setParameter("course",course);
+        dupa.setParameter("trainingNumber",trainingNumber);
+        dupa.setParameter("maxSalary",maxSalary);
         List<Employee> resultList = dupa.getResultList();
 //        for (Training tr: resultList) {
 //            System.out.println(tr);
