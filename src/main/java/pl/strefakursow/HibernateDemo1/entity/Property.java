@@ -1,4 +1,4 @@
-package pl.HibernateAssociations.Demo.Enttity;
+package pl.strefakursow.HibernateDemo1.entity;
 
 import javax.persistence.*;
 

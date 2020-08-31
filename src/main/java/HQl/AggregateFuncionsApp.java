@@ -6,8 +6,6 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 import pl.strefakursow.HibernateDemo1.entity.Employee;
 
-import java.util.List;
-
 public class AggregateFuncionsApp {
     public static void main(String[] args) {
 

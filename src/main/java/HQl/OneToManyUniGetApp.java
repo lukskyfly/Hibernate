@@ -3,12 +3,10 @@ package HQl;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import pl.HibernateAssociations.Demo.Enttity.Company;
-import pl.HibernateAssociations.Demo.Enttity.CompanyDetail;
-import pl.HibernateAssociations.Demo.Enttity.Department;
-import pl.HibernateAssociations.Demo.Enttity.Property;
-
-import java.util.Set;
+import pl.strefakursow.HibernateDemo1.entity.Company;
+import pl.strefakursow.HibernateDemo1.entity.CompanyDetail;
+import pl.strefakursow.HibernateDemo1.entity.Department;
+import pl.strefakursow.HibernateDemo1.entity.Property;
 
 public class OneToManyUniGetApp {
     public static void main(String[] args) {

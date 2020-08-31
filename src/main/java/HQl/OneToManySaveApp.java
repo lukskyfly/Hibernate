@@ -4,9 +4,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
-import pl.HibernateAssociations.Demo.Enttity.Company;
-import pl.HibernateAssociations.Demo.Enttity.CompanyDetail;
-import pl.HibernateAssociations.Demo.Enttity.Property;
+import pl.strefakursow.HibernateDemo1.entity.Company;
+import pl.strefakursow.HibernateDemo1.entity.CompanyDetail;
+import pl.strefakursow.HibernateDemo1.entity.Property;
 
 public class OneToManySaveApp {
     public static void main(String[] args) {

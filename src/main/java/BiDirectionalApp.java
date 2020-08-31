@@ -1,8 +1,8 @@
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import pl.HibernateAssociations.Demo.Enttity.Company;
-import pl.HibernateAssociations.Demo.Enttity.CompanyDetail;
+import pl.strefakursow.HibernateDemo1.entity.Company;
+import pl.strefakursow.HibernateDemo1.entity.CompanyDetail;
 
 public class BiDirectionalApp {
     public static void main(String[] args) {

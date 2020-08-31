@@ -1,17 +1,14 @@
-package HQl;
+package pl.strefakursow;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
-import pl.strefakursow.HibernateDemo1.entity.Company;
-import pl.strefakursow.HibernateDemo1.entity.CompanyDetail;
-import pl.strefakursow.HibernateDemo1.entity.Property;
+import pl.strefakursow.HibernateDemo1.entity.*;
 
-import java.util.List;
-
-public class OneToManeHqlApp {
+public class ManyToManySaveApp {
     public static void main(String[] args) {
+
         //  Stworzenie obiektu Configuration
         Configuration conf = new Configuration();
         //Wczytanie pliku konfiguracujnego
@@ -20,25 +17,33 @@ public class OneToManeHqlApp {
         conf.addAnnotatedClass(Company.class);
         conf.addAnnotatedClass(CompanyDetail.class);
         conf.addAnnotatedClass(Property.class);
+        conf.addAnnotatedClass(Department.class);
+        conf.addAnnotatedClass(Employee.class);
+        conf.addAnnotatedClass(Training.class);
+
         //Stworzenie obiekty SessionFactory
         SessionFactory factory = conf.buildSessionFactory();
         //Pobranie sesji
         Session session = factory.getCurrentSession();
 
-        String getCompany = "select c.name from Property p join p.company c where p.city = 'Sevilla'";
-        String getCompany2 = "select c.name from Property p join p.company c join c.companyDetail cd where p.city = 'Barcelona' and cd.residence = 'Switzerland'";
-        String getCompany3 = "select c.name from Company c  where size(c.properties)>4";
         session.beginTransaction();
-        Query dupa = session.createQuery(getCompany3);
-        List <String> resultList=dupa.getResultList();
+        Training training = new Training("sales training");
+        Training training2 = new Training("karate  training");
+
+        Employee employee = new Employee("Johny","Deep",16000);
+        Employee employee2 = new Employee("Miley","Cyrus",16000);
+        Employee employee3 = new Employee("Lukasz","Grazda",25000);
+        Employee employee4 = new Employee("Laura","Kowalska",11000);
+
+        training2.addEmployee(employee3);
+        training2.addEmployee(employee4);
+        session.persist(training2);
+
 
         session.getTransaction().commit();
-        for (String resul: resultList) {
-            System.out.println(resul);
-
-        }
-
         //Zamkniecie obiektu SessionFactory
         factory.close();
+
+
     }
 }

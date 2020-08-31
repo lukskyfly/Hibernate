@@ -1,6 +1,5 @@
 package HQl;
 
-import jdk.dynalink.linker.LinkerServices;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;

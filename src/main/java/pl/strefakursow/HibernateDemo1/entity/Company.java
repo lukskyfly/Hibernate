@@ -1,7 +1,10 @@
-package pl.HibernateAssociations.Demo.Enttity;
+package pl.strefakursow.HibernateDemo1.entity;
+
+import pl.strefakursow.HibernateDemo1.entity.CompanyDetail;
+import pl.strefakursow.HibernateDemo1.entity.Department;
+import pl.strefakursow.HibernateDemo1.entity.Property;
 
 import javax.persistence.*;
-import javax.persistence.criteria.CriteriaBuilder;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;

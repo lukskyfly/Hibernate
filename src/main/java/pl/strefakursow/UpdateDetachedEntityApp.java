@@ -1,8 +1,9 @@
-package pl.strefakursow.HibernateDemo1.entity;
+package pl.strefakursow;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import pl.strefakursow.HibernateDemo1.entity.Employee;
 
 public class UpdateDetachedEntityApp {
     public static void main(String[] args) {

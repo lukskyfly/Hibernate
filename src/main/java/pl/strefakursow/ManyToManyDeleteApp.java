@@ -1,14 +1,16 @@
-package HQl;
+package pl.strefakursow;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import pl.strefakursow.HibernateDemo1.entity.Company;
-import pl.strefakursow.HibernateDemo1.entity.CompanyDetail;
-import pl.strefakursow.HibernateDemo1.entity.Property;
+import org.hibernate.query.Query;
+import pl.strefakursow.HibernateDemo1.entity.*;
 
-public class FetchTypeApp {
+import java.util.List;
+
+public class ManyToManyDeleteApp {
     public static void main(String[] args) {
+
         //  Stworzenie obiektu Configuration
         Configuration conf = new Configuration();
         //Wczytanie pliku konfiguracujnego
@@ -17,24 +19,26 @@ public class FetchTypeApp {
         conf.addAnnotatedClass(Company.class);
         conf.addAnnotatedClass(CompanyDetail.class);
         conf.addAnnotatedClass(Property.class);
+        conf.addAnnotatedClass(Department.class);
+        conf.addAnnotatedClass(Employee.class);
+        conf.addAnnotatedClass(Training.class);
+
         //Stworzenie obiekty SessionFactory
         SessionFactory factory = conf.buildSessionFactory();
         //Pobranie sesji
         Session session = factory.getCurrentSession();
 
-        int id = 46;
-        session.beginTransaction();
-        System.out.println("Pobieranie obiektu company");
-        Company company = session.get(Company.class,id);
-        System.out.println("Pobrano obiekt company");
-        System.out.println(company);
-        System.out.println("Nieruchomosci :");
-        for (Property property : company.getProperties()){
-            System.out.println(property);
-        }
+        int id =233;
+        int idToDelete = 4;
+         session.beginTransaction();
+        Training training = session.get(Training.class,idToDelete);
+        session.delete(training);
+
 
         session.getTransaction().commit();
         //Zamkniecie obiektu SessionFactory
         factory.close();
+
+
     }
 }
