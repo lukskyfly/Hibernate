@@ -22,7 +22,7 @@ public class Employee {
     @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinTable(name = "employee_training", joinColumns = @JoinColumn(name = "id_employee"),
             inverseJoinColumns = @JoinColumn(name = "id_training"))
-    private List<Training> trainingList;
+    private List<Training> trainings;
 
     public Employee(String firstName, String lastName, int salary) {
         this.firstName = firstName;
@@ -76,10 +76,10 @@ public class Employee {
     }
 
     public List<Training> getTrainingList() {
-        return trainingList;
+        return trainings;
     }
 
     public void setTrainingList(List<Training> trainingList) {
-        this.trainingList = trainingList;
+        this.trainings = trainings;
     }
 }
